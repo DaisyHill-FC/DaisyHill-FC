@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daisy Hill F.C. Under 10s</title>
+    <style>
+        :root {
+            --primary-blue: #0b2545;
+            --secondary-blue: #134074;
+            --accent-red: #c8102e;
+            --light-bg: #f4f4f0;
+            --white: #ffffff;
+            --text-dark: #1d2d44;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 1.5rem 2rem;
+            text-align: center;
+            border-bottom: 4px solid var(--accent-red);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .club-logo {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            background: var(--white);
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.1rem;
+        }
+
+        header p {
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        /* Navigation Tabs */
+        nav {
+            background-color: var(--secondary-blue);
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: var(--white);
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        nav button:hover, nav button.active {
+            background-color: var(--accent-red);
+            border-bottom: 3px solid var(--white);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-blue);
+            margin-bottom: 1.2rem;
+            border-bottom: 2px solid var(--light-bg);
+            padding-bottom: 0.5rem;
+        }
+
+        /* Tables for Stats and Fixtures */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.95rem;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* Info Grid for Contact/Training */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .info-card {
+            background: #f9f9f9;
+            border-left: 5px solid var(--accent-red);
+            padding: 1.5rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .info-card h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.8rem;
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .media-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .media-card img, .media-card video {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .media-card .caption {
+            padding: 10px;
+            font-size: 0.9rem;
+            text-align: center;
+            color: #555;
+        }
+
+        .home-banner {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .home-banner h3 {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 600px) {
+            nav button {
+                padding: 10px 10px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <!-- Club Badge Image Placeholder (replace src with your badge image file path if needed) -->
+        <img src="https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=150" alt="Daisy Hill FC Badge" class="club-logo">
+        <div>
+            <h1>Daisy Hill F.C. Under 10s</h1>
+            <p>Manchester Youth Super League | Saturday & Sunday Squads</p>
+        </div>
+    </header>
+
+    <nav>
+        <button class="nav-btn active" onclick="switchTab(event, 'home')">Home</button>
+        <button class="nav-btn" onclick="switchTab(event, 'saturday')">Saturday Squad</button>
+        <button class="nav-btn" onclick="switchTab(event, 'sunday')">Sunday Squad</button>
+        <button class="nav-btn" onclick="switchTab(event, 'fixtures')">Fixtures</button>
+        <button class="nav-btn" onclick="switchTab(event, 'training')">Training</button>
+        <button class="nav-btn" onclick="switchTab(event, 'gallery')">Gallery</button>
+        <button class="nav-btn" onclick="switchTab(event, 'contact')">Location & Contact</button>
+    </nav>
+
+    <div class="container">
+
+        <!-- HOME TAB -->
+        <div id="home" class="tab-content active">
+            <div class="home-banner">
+                <h3>Welcome to the Official U10s Hub</h3>
+                <p>Welcome parents, players, and supporters! Use the navigation menu above to check out live squad statistics, upcoming league fixtures, training schedules, and matchday media.</p>
+                <br>
+                <p><strong>Home Ground:</strong> The Ginge Power Stadium</p>
+            </div>
+        </div>
+
+        <!-- SATURDAY SQUAD TAB -->
+        <div id="saturday" class="tab-content">
+            <h2>Saturday Team Statistics</h2>
+            <p>Player performance tracker for Saturday league fixtures.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Games Played</th>
+                        <th>Goals</th>
+                        <th>Assists</th>
+                        <th>Clean Sheets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Johnny (GK)</td>
+                        <td>4</td>
+                        <td>0</td>
+                        <td>0</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Player Example</td>
+                        <td>4</td>
+                        <td>3</td>
+                        <td>2</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SUNDAY SQUAD TAB -->
+        <div id="sunday" class="tab-content">
+            <h2>Sunday Team Statistics</h2>
+            <p>Player performance tracker for Sunday league fixtures.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Player Name</th>
+                        <th>Games Played</th>
+                        <th>Goals</th>
+                        <th>Assists</th>
+                        <th>Clean Sheets</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Player Example</td>
+                        <td>3</td>
+                        <td>1</td>
+                        <td>4</td>
+                        <td>-</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- FIXTURES TAB -->
+        <div id="fixtures" class="tab-content">
+            <h2>Upcoming Fixtures</h2>
+            <p>Check out where the teams are playing next in the Manchester Youth Super League.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Squad</th>
+                        <th>Opponent</th>
+                        <th>Venue / Kick-off</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sat, Sep 5</td>
+                        <td>Saturday Team</td>
+                        <td>Example Rovers U10</td>
+                        <td>Home (The Ginge Power Stadium) - 10:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Sun, Sep 6</td>
+                        <td>Sunday Team</td>
+                        <td>Example Athletic U10</td>
+                        <td>Away - 11:30 AM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- TRAINING TAB -->
+        <div id="training" class="tab-content">
+            <h2>Training Schedule & Info</h2>
+            <p>Details regarding mid-week training sessions, times, and what players need to bring.</p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Training Sessions</h3>
+                    <p><strong>When:</strong> Every Wednesday (6:00 PM – 7:30 PM) and Saturday mornings (when there is no fixture).</p>
+                    <p><strong>Location:</strong> The Ginge Power Stadium Astro-pitch.</p>
+                </div>
+                <div class="info-card">
+                    <h3>What to Bring</h3>
+                    <p>• Appropriate footwear (moulds/astros, no metal studs on astro).</p>
+                    <p>• Shin guards (mandatory).</p>
+                    <p>• Plenty of water (named water bottle).</p>
+                    <p>• Weather-appropriate training jacket.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- GALLERY TAB -->
+        <div id="gallery" class="tab-content">
+            <h2>Match Gallery</h2>
+            <p>Photos and video highlights from recent matchdays.</p>
+            <div class="gallery-grid">
+                <div class="media-card">
+                    <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac548e?w=500" alt="Team match action">
+                    <div class="caption">Matchday Focus - U10s Action</div>
+                </div>
+                <div class="media-card">
+                    <video controls>
+                        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="caption">Great team goal build-up!</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONTACT TAB -->
+        <div id="contact" class="tab-content">
+            <h2>Location & Contact Details</h2>
+            <p>Get in touch with the coaching staff or find our home ground.</p>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Ground Information</h3>
+                    <p><strong>The Ginge Power Stadium</strong></p>
+                    <p>St James Street</p>
+                    <p>Westhoughton, Bolton</p>
+                    <p>Greater Manchester</p>
+                </div>
+                <div class="info-card">
+                    <h3>Team Management</h3>
+                    <p><strong>Team Manager / Coach:</strong> Chris</p>
+                    <p><strong>League:</strong> Manchester Youth Super League</p>
+                    <p><strong>Enquiries:</strong> Please speak to coaching staff at training or matchdays for recruitment and team updates.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(evt, tabName) {
+            const contents = document.getElementsByClassName("tab-content");
+            for (let i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+
+            const buttons = document.getElementsByClassName("nav-btn");
+            for (let i = 0; i < buttons.length; i++) {
+                buttons[i].classList.remove("active");
+            }
+
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+        }
+    </script>
+
+</body>
+</html>
