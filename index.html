@@ -218,7 +218,8 @@
         <button class="nav-btn active" onclick="switchTab(event, 'home')">Home</button>
         <button class="nav-btn" onclick="switchTab(event, 'saturday')">Saturday Squad</button>
         <button class="nav-btn" onclick="switchTab(event, 'sunday')">Sunday Squad</button>
-        <button class="nav-btn" onclick="switchTab(event, 'fixtures')">Fixtures</button>
+        <button class="nav-btn" onclick="switchTab(event, 'fixtures')">BBDFL Fixtures</button>
+        <button class="nav-btn" onclick="switchTab(event, 'fixtures')">MYSL Fixtures</button>
         <button class="nav-btn" onclick="switchTab(event, 'training')">Training</button>
         <button class="nav-btn" onclick="switchTab(event, 'gallery')">Gallery</button>
         <button class="nav-btn" onclick="switchTab(event, 'contact')">Location & Contact</button>
@@ -296,8 +297,38 @@
         </div>
 
         <!-- FIXTURES TAB -->
-        <div id="fixtures" class="tab-content">
-            <h2>Upcoming Fixtures</h2>
+        <div id="BBDFL Fixtures" class="tab-content">
+            <h2>Upcoming BBDFL Fixtures</h2>
+            <p>Check out where the teams are playing next in the Bolton & Bury Disctrict Football League.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Squad</th>
+                        <th>Opponent</th>
+                        <th>Venue / Kick-off</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sat, Sep 5</td>
+                        <td>Saturday Team</td>
+                        <td>Example Rovers U10</td>
+                        <td>Home (The Ginge Power Stadium) - 10:00 AM</td>
+                    </tr>
+                    <tr>
+                        <td>Sun, Sep 6</td>
+                        <td>Sunday Team</td>
+                        <td>Example Athletic U10</td>
+                        <td>Away - 11:30 AM</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+         <!-- FIXTURES TAB 2 -->
+        <div id="MYSL Fixtures" class="tab-content">
+            <h2>Upcoming MYSL Fixtures</h2>
             <p>Check out where the teams are playing next in the Manchester Youth Super League.</p>
             <table>
                 <thead>
@@ -347,8 +378,8 @@
 
         <!-- GALLERY TAB -->
         <div id="gallery" class="tab-content">
-            <h2>Match Gallery</h2>
-            <p>Photos and video highlights from recent matchdays.</p>
+            <h2>Catch the team in action</h2>
+            <p>Take a look at the latest action from the cutters!</p>
             <div class="gallery-grid">
                 <div class="media-card">
                     <img src="https://images.unsplash.com/photo-1526232761682-d26e03ac548e?w=500" alt="Team match action">
